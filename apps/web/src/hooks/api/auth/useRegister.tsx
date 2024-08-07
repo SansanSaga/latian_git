@@ -1,6 +1,6 @@
 "use client"
 
-import { axiosInstance } from "@/lib/axios";
+import useAxios from "@/hooks/useAxios";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -14,6 +14,7 @@ interface RegisterArgs {
 const useRegister = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const {axiosInstance} = useAxios();
 
   const register = async (payload: RegisterArgs) => {
     setIsLoading(true);
