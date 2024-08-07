@@ -1,8 +1,9 @@
+import Homepage from "@/features/home"
 
-export default function Home() {
+const Home = () => {
   return (
-    <main>
-      HomePage
-    </main>
+    <Homepage />
   )
 }
+
+export default Home
