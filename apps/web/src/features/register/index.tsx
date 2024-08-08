@@ -23,8 +23,9 @@ const RegisterPage = () => {
       password: "",
     },
     validationSchema: RegisterSchema,
-    onSubmit: async(values) => {
+    onSubmit: async(values, {resetForm}) => {
       await register(values);
+      resetForm();
     },
   });
 

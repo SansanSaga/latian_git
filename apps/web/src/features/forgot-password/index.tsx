@@ -6,20 +6,19 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useFormik } from 'formik'
 import React from 'react'
-import { LoginSchema } from './schemas/LoginSchema'
-import useLogin from '@/hooks/api/auth/useLogin'
-
-const LoginPage = () => {
-  const {login, isLoading} = useLogin();
+import { ForgotPasswordSchema } from './schemas/ForgotPasswordSchema'
+import useForgot from '@/hooks/api/auth/useForgotPassword'
+import useForgotPassword from '@/hooks/api/auth/useForgotPassword'
+const ForgotPasswordPage = () => {
+  const {forgotPassword, isLoading} = useForgotPassword();
 
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
-    validationSchema: LoginSchema,
+    validationSchema: ForgotPasswordSchema,
     onSubmit: async(values, {resetForm}) => {
-      await login(values);
+      await forgotPassword(values.email);
       resetForm();
     },
   });
@@ -27,7 +26,7 @@ const LoginPage = () => {
     <main className="flex justify-center pt-20">
       <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>Sign In</CardTitle>
+        <CardTitle>Forgot Password</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={formik.handleSubmit}>
@@ -36,11 +35,6 @@ const LoginPage = () => {
               <Label htmlFor="email">Email</Label>
               <Input name="email" type="email" placeholder="Your Email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
               {!!formik.touched.email && !!formik.errors.email ? (<p className="text-xs text-red-500">{formik.errors.email}</p>) : null}
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="password">Password</Label>
-              <Input name="password" type="password" placeholder="Your Password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-              {!!formik.touched.password && !!formik.errors.password ? (<p className="text-xs text-red-500">{formik.errors.password}</p>) : null}
             </div>
           </div>
           <Button className="mt-6 w-full" disabled={isLoading}>{isLoading ? "Loading..." : "Submit"}</Button>
@@ -51,4 +45,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default ForgotPasswordPage
