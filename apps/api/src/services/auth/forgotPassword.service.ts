@@ -15,7 +15,7 @@ export const forgotPasswordService = async (email: string) => {
 
     const token = sign({ id: user.id }, JWT_SECRET!, { expiresIn: '30m' });
 
-    const link = BASE_URL_FE + `/forgot-password/${token}`;
+    const link = BASE_URL_FE + `/reset-password/${token}`;
 
     await transporter.sendMail({
       to: email,

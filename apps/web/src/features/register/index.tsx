@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { useFormik } from "formik";
 import { RegisterSchema } from "./schemas/RegisterSchema";
 import useRegister from "@/hooks/api/auth/useRegister";
+import Link from "next/link";
 
 const RegisterPage = () => {
   const { register, isLoading } = useRegister();
@@ -57,6 +58,7 @@ const RegisterPage = () => {
             </div>
           </div>
           <Button className="mt-6 w-full" disabled={isLoading}>{isLoading ? "Loading..." : "Submit"}</Button>
+          <Link href={"/login"}><p className="text-xs mt-2">Already have an account? Login here</p></Link>
         </form>
       </CardContent>
     </Card>
