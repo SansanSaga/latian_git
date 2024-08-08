@@ -4,11 +4,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useFormik } from 'formik'
-import React from 'react'
-import { ForgotPasswordSchema } from './schemas/ForgotPasswordSchema'
-import useForgot from '@/hooks/api/auth/useForgotPassword'
 import useForgotPassword from '@/hooks/api/auth/useForgotPassword'
+import { useFormik } from 'formik'
+import { ForgotPasswordSchema } from './schemas/ForgotPasswordSchema'
 const ForgotPasswordPage = () => {
   const {forgotPassword, isLoading} = useForgotPassword();
 
