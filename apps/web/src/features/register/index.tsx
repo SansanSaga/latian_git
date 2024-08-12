@@ -15,7 +15,7 @@ import useRegister from "@/hooks/api/auth/useRegister";
 import Link from "next/link";
 
 const RegisterPage = () => {
-  const { register, isLoading } = useRegister();
+  const { mutateAsync: register, isPending: isLoading } = useRegister();
 
   const formik = useFormik({
     initialValues: {
