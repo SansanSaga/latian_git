@@ -11,7 +11,7 @@ import useLogin from '@/hooks/api/auth/useLogin'
 import Link from 'next/link'
 
 const LoginPage = () => {
-  const {login, isLoading} = useLogin();
+  const {mutateAsync, isPending: isLoading} = useLogin();
 
   const formik = useFormik({
     initialValues: {
@@ -20,7 +20,7 @@ const LoginPage = () => {
     },
     validationSchema: LoginSchema,
     onSubmit: async(values, {resetForm}) => {
-      await login(values);
+      await mutateAsync(values);
       resetForm();
     },
   });
