@@ -19,7 +19,7 @@ export const loginService = async (body: Pick<User, 'email' | 'password'>) => {
     const isPasswordValid = await comparePassword(password!, user.password!)
 
     if (!isPasswordValid) {
-      throw new Error("Incorrect passwowrd");
+      throw new Error("Incorrect password");
     }
 
     const token = sign({id: user.id}, JWT_SECRET!, {expiresIn: "2h"});
